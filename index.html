@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean with Madie 🌸</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ─────────────── INTRO SPLASH ─────────────── -->
+<div id="intro" onclick="dismissIntro()">
+  <div class="intro-rays"></div>
+  <div class="intro-aura"></div>
+  <div class="intro-petals" id="intro-petals"></div>
+
+  <div class="logo-stage">
+    <div class="logo-image"></div>
+    <div class="logo-shimmer"></div>
+    <div class="yin-pulse"></div>
+    <div class="yin-pulse late"></div>
+  </div>
+
+  <div class="intro-tagline">
+    <span class="blossom">🌸</span>
+    <span class="blossom">🌸</span>
+    <span class="label">KOREAN WITH MADIE</span>
+    <span class="blossom">🌸</span>
+    <span class="blossom">🌸</span>
+  </div>
+  <div class="intro-subline">С&nbsp;ПЕРВОГО&nbsp;ШАГА&nbsp;К&nbsp;КРАСОТЕ&nbsp;КОРЕИ</div>
+  <div class="intro-cta">TAP TO BEGIN · НАЖМИТЕ, ЧТОБЫ НАЧАТЬ</div>
+</div>
+
+<!-- ─────────────── APP SHELL ─────────────── -->
+<div class="app-shell" data-screen-label="App">
+
+  <!-- DESKTOP SIDEBAR (visible only on ≥1024px) -->
+  <aside class="sidenav" aria-label="Главная навигация">
+    <div class="sidenav-brand">
+      <div class="sidenav-mark"><img src="assets/logo-app.png" alt="" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;"></div>
+      <div>
+        <div class="sidenav-title">Korean with Madie</div>
+        <div class="sidenav-sub">с первого шага</div>
+      </div>
+    </div>
+    <div class="sidenav-section-label">НАВИГАЦИЯ</div>
+    <nav class="sidenav-list">
+      <button class="nav-item active" data-screen="home"    onclick="switchScreen('home')"><i class="fa-solid fa-house"></i><span>Главная</span></button>
+      <button class="nav-item" data-screen="lessons" onclick="switchScreen('lessons')"><i class="fa-solid fa-book-open"></i><span>Уроки</span></button>
+      <button class="nav-item" data-screen="hangul"  onclick="switchScreen('hangul')"><i class="fa-solid fa-language"></i><span>한글 Lab</span></button>
+      <button class="nav-item" data-screen="games"   onclick="switchScreen('games')"><i class="fa-solid fa-gamepad"></i><span>Игры</span></button>
+      <button class="nav-item" data-screen="profile" onclick="switchScreen('profile')"><i class="fa-solid fa-user"></i><span>Профиль</span></button>
+    </nav>
+    <div class="sidenav-stats" id="sidenav-stats">
+      <div class="sidenav-stats-row">
+        <span>🔥 Стрик</span>
+        <strong id="side-streak">0</strong>
+      </div>
+      <div class="sidenav-stats-row">
+        <span>✨ XP</span>
+        <strong id="side-xp">0</strong>
+      </div>
+      <div class="sidenav-stats-row">
+        <span>⭐ Уровень</span>
+        <strong id="side-level">1</strong>
+      </div>
+    </div>
+    <div class="sidenav-quote">
+      <span class="ko">화이팅!</span><br>
+      <span style="font-size: 10.5px; color: var(--soft);">шаг за шагом</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (screens render here) -->
+  <main class="app-main">
+
+  <!-- HOME -->
+  <section id="screen-home" class="screen active" data-screen-label="01 Home">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <div class="topbar-mark"><img src="assets/logo-app.png" alt="" style="width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block; position:relative; z-index:1;"></div>
+        <div>
+          <div class="topbar-title">Korean with Madie</div>
+          <div class="topbar-sub">с первого шага</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <span class="stat-pill"><span class="ico" style="color:var(--coral)">🔥</span><span id="streak-value">23</span></span>
+        <span class="stat-pill"><span class="ico" style="color:var(--gold)">✨</span><span id="xp-value">1240</span></span>
+      </div>
+    </header>
+
+    <!-- Greeting -->
+    <div class="page-head" style="padding-top: 24px; padding-bottom: 14px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap: 12px;">
+        <div>
+          <div class="display ko" style="font-size: 56px; line-height: .92; color: var(--berry);">안녕!</div>
+          <div style="color: var(--coral); font-size: 18px; font-weight: 500; margin-top: 2px;">
+            Привет, <span id="user-name">Мадина</span> <span style="font-size:14px;">🌸</span>
+          </div>
+          <div class="page-meta" id="home-date-line">Понедельник, 4 мая</div>
+        </div>
+        <div id="home-greet-avatar" class="home-greet-avatar">👧🏻</div>
+      </div>
+    </div>
+
+    <!-- Cultural Banner -->
+    <div style="padding: 4px 20px 16px;">
+      <div onclick="showCalendar()" class="card card-press" style="background: linear-gradient(135deg, var(--gold), var(--coral)); border:none; color: var(--cream); padding: 18px; display: flex; gap: 14px; align-items: center;">
+        <div id="culture-emoji" style="width:48px; height:48px; flex-shrink:0; border-radius: 14px; background: rgba(255,255,255,.22); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; font-size: 28px;">🎏</div>
+        <div style="flex:1; min-width: 0;">
+          <div style="display:flex; align-items:center; gap:8px; opacity:.92;">
+            <span style="font-size:9.5px; letter-spacing: 0.18em; font-weight: 600;">СЕГОДНЯ В КОРЕЕ</span>
+            <span id="culture-date" style="background: rgba(255,255,255,.28); padding: 2px 8px; border-radius:999px; font-size:9px; font-weight:600;">—</span>
+          </div>
+          <div id="culture-title" class="ko" style="font-weight:600; font-size:17px; margin-top:4px;">—</div>
+          <div style="font-size:12.5px; opacity:.92; margin-top:2px;">Национальный праздник · тапни, чтобы узнать традиции →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Lesson (dynamic, reflects current lesson) -->
+    <div id="hero-lesson" style="padding: 0 20px 20px;"></div>
+
+    <!-- Quick actions -->
+    <div style="padding: 0 20px 20px;">
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        <div onclick="switchScreen('hangul')" class="card card-press" style="padding: 14px 8px; text-align:center;">
+          <div style="font-size:24px;">🧩</div>
+          <div style="font-size:13px; font-weight:600; color: var(--berry); margin-top:6px;">Hangul Lab</div>
+          <div style="font-size:10px; color: var(--soft); margin-top:1px;">Собери слог</div>
+        </div>
+        <div onclick="switchScreen('games')" class="card card-press" style="padding: 14px 8px; text-align:center;">
+          <div style="font-size:24px;">🎮</div>
+          <div style="font-size:13px; font-weight:600; color: var(--berry); margin-top:6px;">Игры</div>
+          <div style="font-size:10px; color: var(--soft); margin-top:1px;">5 мини-игр</div>
+        </div>
+        <div onclick="showCalendar()" class="card card-press" style="padding: 14px 8px; text-align:center;">
+          <div style="font-size:24px;">📅</div>
+          <div style="font-size:13px; font-weight:600; color: var(--berry); margin-top:6px;">Календарь</div>
+          <div style="font-size:10px; color: var(--soft); margin-top:1px;">Праздники</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom videos from admin -->
+    <div id="custom-videos" style="padding: 0 20px 8px;"></div>
+
+    <!-- Feed -->
+    <div style="padding: 0 20px;">
+      <div class="section-head">
+        <div class="left">
+          <div class="rule"></div>
+          <span class="title">Лента</span>
+        </div>
+        <span class="meta">всё новое от Мади</span>
+      </div>
+
+      <!-- Custom feed posts from admin (announcements / culture / news) -->
+      <div id="custom-feed-posts" style="display:grid; gap:14px; margin-bottom:14px;"></div>
+
+      <div style="display: grid; gap: 14px;">
+
+        <!-- Voice Note -->
+        <div class="feed-card feed-card-dark">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span class="chip" style="background:rgba(255,255,255,.18); color:white;"><i class="fa-solid fa-play" style="font-size:8px;"></i> VOICE NOTE · 3:12</span>
+            <span style="font-size:11px; opacity:.75;">5 мин назад</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div class="placeholder-img" style="width:42px; height:42px; border-radius:50%; flex-shrink:0; font-size:9px; border-color:rgba(201,165,92,.5);">М</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:600; font-size:14px;">Сегодня про слово <span class="ko">화이팅</span></div>
+              <div style="font-size:12px; opacity:.8; margin-top:3px;">3 минуты, расскажу почему корейцы говорят это вместо «удачи»</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:2px; align-items:center; margin: 16px 0 14px; height: 22px;" id="waveform"></div>
+          <button onclick="playMadieVoice(this)" class="btn btn-block" style="background:white; color:var(--berry);">
+            <i class="fa-solid fa-play" style="font-size:11px;"></i> Слушать
+          </button>
+        </div>
+
+        <!-- Word of the Week -->
+        <div class="feed-card feed-card-rose" style="display:flex; gap: 14px; align-items:center;">
+          <div style="width:60px; height:60px; background:white; border:1px solid rgba(201,165,92,.4); border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <span class="ko" style="font-size:38px; font-weight:700; color: var(--berry);">봄</span>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <span class="chip chip-gold">СЛОВО НЕДЕЛИ</span>
+            <div style="font-weight:600; color:var(--berry); margin-top:6px;">Весна</div>
+            <div style="font-size:11px; color: rgba(92,42,51,.7);">[pom] — самое поэтичное слово сезона</div>
+          </div>
+          <button onclick="playSyllable('봄', this)" class="btn btn-ghost" style="width:36px; height:36px; padding:0; border-radius:50%; flex-shrink:0;"><i class="fa-solid fa-play" style="font-size:11px; color:var(--gold);"></i></button>
+        </div>
+
+        <!-- Culture -->
+        <div class="feed-card" style="background: linear-gradient(150deg, var(--blush), var(--rose));">
+          <span class="chip chip-gold">🎎 КУЛЬТУРА</span>
+          <div class="display" style="font-size:18px; color:var(--berry); margin-top:8px;">Что такое 정 (jeong)?</div>
+          <div style="font-size:12.5px; color: rgba(92,42,51,.8); margin-top:6px; line-height:1.5;">
+            Слово, которое нельзя перевести одним русским. Глубокая привязанность, тёплая нить между людьми, которая растёт со временем — между подругами, между бабушкой и внучкой...
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:12px; border-top:1px solid rgba(92,42,51,.12);">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <div style="width:22px; height:22px; background:white; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px;">🌸</div>
+              <span style="font-size:11px; font-weight:500; color:var(--berry);">От Мади</span>
+            </div>
+            <span onclick="showCultureDetail()" style="font-size:12px; font-weight:600; color: var(--berry); cursor:pointer;">Читать дальше →</span>
+          </div>
+        </div>
+
+        <!-- News -->
+        <div class="feed-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span class="chip chip-blush">📰 НОВОСТИ</span>
+            <span style="font-size:11px; color: var(--soft);">Сегодня · 09:30</span>
+          </div>
+          <div class="placeholder-img" style="height: 124px; margin-bottom: 12px;">[ news photo · Сеул сакура ]</div>
+          <div class="ko" style="font-weight:600; color:var(--berry); font-size:16px; line-height:1.3;">서울에 벚꽃이 피기 시작했어요</div>
+          <div style="color: var(--coral); font-style: italic; font-size:13.5px; margin-top:2px;">В Сеуле начала цвести сакура</div>
+          <div style="font-size:12px; color: rgba(92,42,51,.75); margin-top:8px; line-height:1.5;">
+            Парк Йоидо закрыли для машин — местные приходят с пледами и термосами. Похоже на парк Горького, только розовее.
+          </div>
+          <div style="display:flex; gap:8px; margin-top:14px;">
+            <button onclick="playSyllable('서울에 벚꽃이 피기 시작했어요', this)" class="btn" style="flex:1; background:var(--rose); color:var(--berry);">
+              <i class="fa-solid fa-headphones"></i> Послушать <span style="opacity:.6; font-size:11px;">(0:42)</span>
+            </button>
+            <div style="display:flex; border:1px solid var(--line); border-radius:14px; overflow:hidden;">
+              <div style="padding:10px 12px; background:var(--berry); color:white; cursor:pointer;">🇰🇷</div>
+              <div style="padding:10px 12px; cursor:pointer;">🇷🇺</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- K-POP -->
+        <div class="feed-card feed-card-night">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span class="chip" style="background:var(--gold); color: var(--ink);">🎵 K-POP</span>
+            <span style="font-size:11px; opacity:.8;">IU</span>
+          </div>
+          <div class="ko" style="font-weight:600; font-size:16px;">«이 밤 그날의 반딧불을»</div>
+          <div style="font-style: italic; font-size:13px; color: var(--blush); margin-top:2px;">«В эту ночь — светлячков того дня»</div>
+          <div style="background: rgba(255,255,255,.08); border-radius:14px; padding: 12px; margin-top: 12px; font-size: 12px;">
+            <div style="color: var(--gold); font-weight: 600; letter-spacing: 0.18em; font-size: 9px;">ГРАММАТИКА</div>
+            <div style="opacity: .9; margin-top: 4px; line-height: 1.5;">
+              <span class="ko">그날의</span> — родительный падеж от <span class="ko">그날</span> (тот день). Окончание <span class="ko">-의</span> показывает принадлежность.
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div class="placeholder-img" style="width:38px; height:38px; border-radius:10px; font-size:10px; background:rgba(255,255,255,.1); color:rgba(255,255,255,.6); border-color:rgba(255,255,255,.2);">IU</div>
+              <div>
+                <div style="font-size:13px; font-weight:600;">Through the Night</div>
+                <div style="font-size:11px; opacity:.7;">Palette · 2017 · IU</div>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right" style="opacity:.6;"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section id="screen-lessons" class="screen" data-screen-label="02 Lessons">
+    <header class="topbar">
+      <div style="min-width:0;">
+        <div class="page-eyebrow">МОЙ ПУТЬ</div>
+        <div class="display" style="font-size:20px; color:var(--berry); margin-top:2px; line-height:1.1; white-space:nowrap;">Модуль 1 · Хангыль</div>
+        <div id="module-subheader" style="font-size:11px; color:var(--soft); margin-top:2px;">0 из 10 уроков</div>
+      </div>
+      <span id="module-pct-chip" class="chip" style="background: linear-gradient(90deg, var(--rose), var(--gold)); color:white; flex-shrink:0;">🌸 0%</span>
+    </header>
+
+    <div style="padding: 18px 20px 8px;">
+      <div class="progress"><i id="module-progress-bar" style="width:0%"></i></div>
+    </div>
+
+    <!-- Module header -->
+    <div style="padding: 12px 20px;">
+      <div class="card card-padded" style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px; min-width:0; flex:1;">
+          <div style="width:36px; height:36px; flex-shrink:0; border-radius:12px; background: var(--blush); display:flex; align-items:center; justify-content:center; font-size:18px;">🌸</div>
+          <div style="min-width:0;">
+            <div style="font-weight:600; color:var(--berry); font-size:13px; line-height:1.2;">Основа основ</div>
+            <div style="font-size:10.5px; color: var(--soft); margin-top:2px;">Хангыль · базовый курс</div>
+          </div>
+        </div>
+        <span id="module-header-count" class="chip chip-sage" style="flex-shrink:0;">✓ 0/10</span>
+      </div>
+    </div>
+
+    <!-- Dynamic lesson path -->
+    <div id="lesson-path"></div>
+
+    <!-- Locked modules -->
+    <div style="padding: 0 20px; display: grid; gap: 10px;">
+      <div class="card card-padded" style="display:flex; justify-content:space-between; align-items:center; border-style:dashed; opacity:.7;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:18px;">🌸</span>
+          <div>
+            <div style="font-weight:500; font-size:13.5px; color:var(--berry);">Модуль 2 · Первые слова</div>
+            <div style="font-size:10.5px; color: var(--soft);">10 уроков · откроется после Модуля 1</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-lock" style="color: rgba(92,42,51,.4);"></i>
+      </div>
+      <div class="card card-padded" style="display:flex; justify-content:space-between; align-items:center; border-style:dashed; opacity:.7;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:18px;">🌸</span>
+          <div>
+            <div style="font-weight:500; font-size:13.5px; color:var(--berry);">Модуль 3 · Простые предложения</div>
+            <div style="font-size:10.5px; color: var(--soft);">10 уроков · откроется после Модуля 2</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-lock" style="color: rgba(92,42,51,.4);"></i>
+      </div>
+    </div>
+
+    <!-- Custom lessons from admin -->
+    <div id="custom-lessons" style="padding: 16px 20px 0;"></div>
+
+    <div style="text-align:center; padding: 28px 20px 8px; font-size: 11.5px; font-style: italic; color: rgba(92,42,51,.55); line-height: 1.6;">
+      <span class="ko">«천 리 길도 한 걸음부터»</span><br>
+      <span style="font-size:10.5px;">Дорога в тысячу ли начинается с одного шага</span>
+    </div>
+  </section>
+
+  <!-- HANGUL -->
+  <section id="screen-hangul" class="screen" data-screen-label="03 Hangul">
+    <header class="topbar">
+      <div>
+        <div class="page-eyebrow">КОНСТРУКТОР СЛОГОВ</div>
+        <div class="display ko" style="font-size: 22px; color: var(--berry); margin-top: 2px;">한글 Lab</div>
+      </div>
+      <span class="chip chip-coral ko" id="hangul-formula">ㄱ + ㅏ = 가</span>
+    </header>
+
+    <div style="padding: 20px;">
+      <!-- Result -->
+      <div class="hangul-display">
+        <div class="ko hangul-result" id="hangul-result">가</div>
+        <div style="color: var(--coral); letter-spacing: 0.32em; font-size: 18px; margin-top: 6px;" id="hangul-translit">[ ga ]</div>
+        <div style="display:flex; gap:8px; justify-content:center; margin-top:16px; flex-wrap:wrap;">
+          <button onclick="speakSyllable(this)" class="btn-mic" style="background:white; border-color:rgba(242,166,174,.4);">
+            <i class="fa-solid fa-volume-up"></i> Послушать
+          </button>
+          <button onclick="pronounceCheck(document.getElementById('hangul-result').textContent, this)" class="btn-mic">
+            <i class="fa-solid fa-microphone"></i> Произнести
+          </button>
+        </div>
+      </div>
+
+      <!-- Equation -->
+      <div style="display:flex; justify-content:center; align-items:center; gap: 10px; margin-top: 20px;">
+        <div id="cons-display" class="ko" style="width:54px; height:54px; background:var(--coral); color:white; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">ㄱ</div>
+        <div style="font-size:24px; color:var(--rose);">+</div>
+        <div id="vowel-display" class="ko" style="width:54px; height:54px; background:var(--rose); color:white; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">ㅏ</div>
+        <div style="font-size:24px; color:var(--rose);">=</div>
+        <div id="result-display" class="ko" style="width:54px; height:54px; background:var(--berry); color:white; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">가</div>
+      </div>
+
+      <!-- Consonants -->
+      <div style="margin-top: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; padding: 0 4px; margin-bottom: 10px;">
+          <div class="ko" style="color: var(--coral); font-size:11px; letter-spacing: 0.16em; font-weight:600;">자음 · СОГЛАСНЫЕ</div>
+          <div style="font-size: 10.5px; color: var(--soft);">10 базовых</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 8px;" id="consonants-grid"></div>
+      </div>
+
+      <!-- Vowels -->
+      <div style="margin-top: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; padding: 0 4px; margin-bottom: 10px;">
+          <div class="ko" style="color: var(--coral); font-size:11px; letter-spacing: 0.16em; font-weight:600;">모음 · ГЛАСНЫЕ</div>
+          <div style="font-size: 10.5px; color: var(--soft);">10 базовых</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 8px;" id="vowels-grid"></div>
+      </div>
+
+      <!-- Word builder -->
+      <div style="margin-top: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; padding: 0 4px; margin-bottom: 10px;">
+          <div class="ko" style="color: var(--coral); font-size:11px; letter-spacing: 0.16em; font-weight:600;">단어 · МОЁ СЛОВО</div>
+          <div style="font-size: 10.5px; color: var(--soft);">собери слоги или впиши сам</div>
+        </div>
+        <input id="hangul-word" class="input ko" placeholder="моё слово…" style="text-align:center; font-size:22px; font-weight:700; color:var(--berry);">
+        <div style="display:flex; gap: 8px; margin-top: 10px;">
+          <button onclick="addSyllableToWord()" class="btn btn-ghost" style="flex:1;">+ Слог</button>
+          <button onclick="backspaceWord()" class="btn btn-ghost" style="flex:1;">⌫ Стереть</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex; gap: 10px; margin-top: 16px;">
+        <button onclick="resetHangul()" class="btn btn-ghost" style="flex:1;">Очистить</button>
+        <button onclick="saveHangulWord()" class="btn btn-primary" style="flex:1.4;">Сохранить слово</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="screen-games" class="screen" data-screen-label="04 Games">
+    <header class="topbar">
+      <div>
+        <div class="page-eyebrow">ИГРЫ И ПРАКТИКА</div>
+        <div class="display" style="font-size: 22px; color: var(--berry); margin-top: 2px;">8 мини-игр 🌸</div>
+      </div>
+      <span class="chip chip-coral" id="games-level">Lvl 1</span>
+    </header>
+
+    <div style="padding: 20px;">
+      <!-- Слова -->
+      <div class="section-head"><div class="left"><div class="rule"></div><span class="title">Слова</span></div><span class="meta">3 игры</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom:18px;">
+        <div onclick="startFlashcards()" class="game-card">
+          <div class="game-icon" style="background: var(--blush);">📚</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Карточки слов</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">SRS-повторение</div>
+          <div style="font-size: 11px; color: var(--coral); font-weight: 600; margin-top: 14px;">+8 XP / карточка</div>
+        </div>
+        <div onclick="startMatch()" class="game-card" data-game-key="match">
+          <div class="game-icon" style="background: rgba(132,196,116,.15);">🖼️</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Подбери картинку</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">5 раундов · Лёгкая</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: var(--sage); font-weight: 600; margin-top: 4px;">+8 XP / раунд</div>
+        </div>
+        <div onclick="startMemory()" class="game-card" style="grid-column: span 2;" data-game-key="memory">
+          <div class="game-icon" style="background: linear-gradient(140deg, var(--rose), var(--coral)); color:white;">🃏</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Память · 짝 맞추기</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">6 пар · найди слово ↔ перевод</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: var(--coral); font-weight: 600; margin-top: 4px;">+5 XP / пара · бонус за быстро</div>
+        </div>
+      </div>
+
+      <!-- Перевод -->
+      <div class="section-head"><div class="left"><div class="rule"></div><span class="title">Перевод</span></div><span class="meta">2 игры</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom:18px;">
+        <div onclick="startListen()" class="game-card" data-game-key="listen">
+          <div class="game-icon" style="background: rgba(201,165,92,.15);">🎧</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">На слух</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">5 слов · Аудио</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: #B58A36; font-weight: 600; margin-top: 4px;">+10 XP / слово</div>
+        </div>
+        <div onclick="startTranslate()" class="game-card" data-game-key="translate">
+          <div class="game-icon" style="background: rgba(132,196,116,.15);">⚡</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Быстрый перевод</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">RU → KO · 6 раундов</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: var(--sage); font-weight: 600; margin-top: 4px;">+10 XP / слово</div>
+        </div>
+      </div>
+
+      <!-- Грамматика -->
+      <div class="section-head"><div class="left"><div class="rule"></div><span class="title">Грамматика</span></div><span class="meta">3 игры</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom:18px;">
+        <div onclick="startBuild()" class="game-card" data-game-key="build">
+          <div class="game-icon" style="background: var(--blush);">🧩</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Собери слово</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">5 слов · Средняя</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: var(--coral); font-weight: 600; margin-top: 4px;">+12 XP / слово</div>
+        </div>
+        <div onclick="startNumbers()" class="game-card" data-game-key="numbers">
+          <div class="game-icon" style="background: linear-gradient(140deg, var(--gold), var(--coral)); color:white;">🔢</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Числа · 숫자</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">Sino + Native · 6 раундов</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: #B58A36; font-weight: 600; margin-top: 4px;">+8 XP / число</div>
+        </div>
+        <div onclick="startSentence()" class="game-card" style="grid-column: span 2;" data-game-key="sentence">
+          <div class="game-icon" style="background: rgba(132,196,116,.18);">📝</div>
+          <div style="font-weight:600; color:var(--berry); font-size:14px;">Собери фразу</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">4 фразы · перетаскиваем слова в правильном порядке</div>
+          <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+          <div style="font-size: 11px; color: var(--sage); font-weight: 600; margin-top: 4px;">+20 XP / фраза</div>
+        </div>
+      </div>
+
+      <!-- Музыка -->
+      <div class="section-head"><div class="left"><div class="rule"></div><span class="title">Музыка</span></div><span class="meta">K-Pop · хит-парад</span></div>
+      <div onclick="startKpop()" class="game-card" data-game-key="kpop" style="background: linear-gradient(140deg, var(--berry), var(--ink)); color: white; border:none;">
+        <div class="game-icon" style="background: rgba(255,255,255,.12);">🎵</div>
+        <div style="font-weight:600; font-size:14px;">K-Pop Fill</div>
+        <div style="font-size: 10.5px; opacity:.7; margin-top: 2px;">IU · BTS · BLACKPINK · NewJeans · TWICE</div>
+        <div class="best-score" style="font-size: 10.5px; color: var(--gold); font-weight: 600; margin-top: 6px;">Ещё не играли</div>
+        <div style="font-size: 11px; color: var(--gold); font-weight: 600; margin-top: 4px;">+15 XP / строка</div>
+      </div>
+
+      <div style="text-align: center; font-size: 11.5px; color: var(--soft); margin-top: 22px; line-height: 1.5;">
+        Чем больше правильных подряд — тем больше XP и стрик 🔥
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="screen-profile" class="screen" data-screen-label="05 Profile">
+    <header class="topbar">
+      <div>
+        <div class="page-eyebrow">ПРОФИЛЬ</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:2px;">
+          <div class="display" style="font-size:22px; color:var(--berry);" id="profile-name">Гость</div>
+          <span id="profile-admin-badge" class="chip chip-coral" style="display:none; font-size:9px;">🔑 АДМИН</span>
+        </div>
+      </div>
+      <span class="chip chip-blush" id="profile-rank-chip" onclick="showRanksList()" style="cursor:pointer;">🌸 Подмастерье</span>
+    </header>
+
+    <div style="padding: 24px 20px;">
+      <!-- LOGIN / REGISTER (shown when guest) -->
+      <div id="auth-section" style="margin-bottom: 24px;">
+        <div class="card card-padded" style="background: linear-gradient(160deg, #FFF4EE, white);">
+          <div style="text-align:center; margin-bottom: 18px;">
+            <div style="font-size:34px;">🌸</div>
+            <div class="display" style="font-size:20px; color:var(--berry); margin-top:4px;">Войди в дневник</div>
+            <div style="font-size:12px; color:var(--soft); margin-top:4px;">чтобы сохранять прогресс и стрик</div>
+          </div>
+          <div class="auth-tabs">
+            <button id="tab-login" onclick="showAuthTab('login')" class="auth-tab auth-tab-active">Вход</button>
+            <button id="tab-register" onclick="showAuthTab('register')" class="auth-tab">Регистрация</button>
+          </div>
+          <div id="form-login" style="display:flex; flex-direction:column; gap:10px;">
+            <input id="li-name" class="input" placeholder="Имя или email">
+            <div class="pass-wrap">
+              <input id="li-pass" class="input" type="password" placeholder="Пароль">
+              <button type="button" class="pass-toggle" onclick="togglePass(this)" aria-label="Показать пароль" tabindex="-1"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <button onclick="loginUser()" class="btn btn-primary btn-block" style="margin-top:4px;">Войти 🌸</button>
+            <div style="text-align:center; font-size:11px; color:var(--soft); margin-top:2px;">Забыла пароль? <span onclick="showForgotPassword()" style="color:var(--coral); cursor:pointer; font-weight:600;">Восстановить</span></div>
+          </div>
+          <div id="form-register" style="display:none; flex-direction:column; gap:10px;">
+            <input id="rg-name" class="input" placeholder="Как тебя зовут?">
+            <input id="rg-email" class="input" type="email" placeholder="Email">
+            <div class="pass-wrap">
+              <input id="rg-pass" class="input" type="password" placeholder="Придумай пароль (≥6 символов)">
+              <button type="button" class="pass-toggle" onclick="togglePass(this)" aria-label="Показать пароль" tabindex="-1"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <button onclick="registerUser()" class="btn btn-primary btn-block" style="margin-top:4px;">Создать аккаунт ✨</button>
+            <div style="text-align:center; font-size:11px; color:var(--soft); margin-top:2px;">Регистрируясь, ты соглашаешься с правилами</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; margin:16px 0 12px;">
+            <div style="flex:1; height:1px; background:var(--line);"></div>
+            <div style="font-size:10px; color:var(--soft); letter-spacing:.15em;">ИЛИ</div>
+            <div style="flex:1; height:1px; background:var(--line);"></div>
+          </div>
+          <button onclick="loginUser('Гостья 🌸')" class="btn btn-ghost btn-block">Продолжить как гость</button>
+        </div>
+      </div>
+
+      <!-- Avatar (visible after login) -->
+      <div id="profile-content" style="display:none;">
+      <div style="text-align:center; margin-bottom: 20px;">
+        <div style="position:relative; width:96px; height:96px; margin: 0 auto;">
+          <div class="placeholder-img" style="width:96px; height:96px; border-radius:50%; border: 3px solid var(--rose); font-size: 32px; box-shadow: var(--shadow-md), inset 0 0 0 4px white;">👧🏻</div>
+          <button onclick="document.getElementById('avatar-file').click()" style="position:absolute; bottom: -2px; right: -2px; width:34px; height:34px; background: var(--grad-coral); border:2px solid white; border-radius:50%; color: white; font-size: 13px; box-shadow: var(--shadow-md); cursor:pointer;"><i class="fa-solid fa-camera"></i></button>
+          <input type="file" accept="image/*" id="avatar-file" style="display:none;" onchange="changeAvatar(event)">
+        </div>
+        <div id="profile-email" style="font-size: 12px; color: var(--soft); margin-top: 12px;">без email</div>
+        <div style="font-size: 10.5px; color: var(--hush); margin-top: 4px; letter-spacing:.04em;">Тапни 📷, чтобы поменять фото</div>
+      </div>
+
+      <!-- Level card -->
+      <div onclick="showRanksList()" class="card card-padded card-press profile-student-only" style="margin-bottom:14px; cursor:pointer; background: linear-gradient(135deg, var(--blush), var(--paper));">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span id="profile-rank-emoji" style="font-size:26px;">🌱</span>
+            <div>
+              <div style="font-weight:600; color:var(--berry); font-size:14px;" id="profile-rank-label">Начинающая</div>
+              <div style="font-size:11px; color:var(--soft);">Уровень <span id="profile-level-num">1</span> · <span id="profile-xp-total">0</span> XP</div>
+            </div>
+          </div>
+          <span class="chip chip-coral" style="font-size:10px;">смотреть ранги →</span>
+        </div>
+        <div style="height:8px; background:rgba(255,255,255,.55); border-radius:999px; overflow:hidden;">
+          <div id="profile-xp-bar" style="height:100%; width:0%; background:var(--grad-coral); border-radius:999px; transition:width .35s var(--ease-out);"></div>
+        </div>
+        <div style="font-size:10.5px; color:var(--soft); margin-top:6px; text-align:right;" id="profile-xp-next">— XP до следующего уровня</div>
+      </div>
+
+      <!-- Stats (student only) -->
+      <div class="card card-padded profile-student-only" style="margin-bottom: 16px;">
+        <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <div style="font-weight: 600; color: var(--berry); font-size: 14px;">🔥 Стрик: <span style="color: var(--coral);" id="profile-streak-text">0 дней</span></div>
+          <span class="chip chip-blush" id="profile-month-chip">—</span>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 10.5px;" id="streak-cal"></div>
+      </div>
+
+      <!-- Achievements (student only) -->
+      <div class="profile-student-only">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 0 4px; margin-bottom: 10px;">
+          <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--soft);">ДОСТИЖЕНИЯ <span id="ach-count" style="color:var(--coral); font-weight:700; letter-spacing:.04em;">0/0</span></div>
+          <span onclick="showAllAchievements()" style="font-size: 11px; color: var(--coral); font-weight: 600; cursor: pointer;">Все →</span>
+        </div>
+        <div id="ach-strip" class="scroll-x"></div>
+      </div>
+
+      <!-- Stats grid (student only) -->
+      <div class="profile-student-only" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;">
+        <div class="card card-padded" style="text-align:center;">
+          <div class="display" id="stat-words" style="font-size: 22px; color: var(--berry);">87</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">слов выучено</div>
+        </div>
+        <div class="card card-padded" style="text-align:center;">
+          <div class="display" id="stat-lessons" style="font-size: 22px; color: var(--berry);">5</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">уроков пройдено</div>
+        </div>
+        <div class="card card-padded" style="text-align:center;">
+          <div class="display" id="stat-xp" style="font-size: 22px; color: var(--berry);">1240</div>
+          <div style="font-size: 10.5px; color: var(--soft); margin-top: 2px;">XP всего</div>
+        </div>
+      </div>
+
+      <!-- Homework (student only) -->
+      <div class="profile-student-only" style="margin-top: 22px;">
+        <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--soft); padding: 0 4px; margin-bottom: 10px;">ДОМАШНЕЕ ЗАДАНИЕ</div>
+        <div id="homework-list"></div>
+      </div>
+
+      <!-- Saved words from Hangul Lab -->
+      <div style="margin-top: 22px;">
+        <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--soft); padding: 0 4px; margin-bottom: 10px;">МОИ СЛОВА · 한글 LAB</div>
+        <div id="saved-words-list"></div>
+      </div>
+
+      <!-- Inline admin panel (admin only) — replaces the old modal -->
+      <div id="profile-admin-settings" class="profile-admin-only" style="margin-top: 20px;"></div>
+
+      <button onclick="showEditProfile()" class="btn btn-ghost btn-block" style="margin-top: 14px;">
+        <i class="fa-solid fa-pen-to-square"></i> Редактировать профиль
+      </button>
+      <button onclick="shareProgress()" class="btn btn-primary btn-block profile-student-only" style="margin-top: 10px;">
+        <i class="fa-solid fa-share-alt"></i> Поделиться прогрессом
+      </button>
+      <button onclick="logoutUser()" class="btn btn-ghost btn-block" style="margin-top: 10px; color:#B33A4A; border-color:rgba(179,58,74,.25);">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти из аккаунта
+      </button>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- AMBIENT SAKURA -->
+  <div id="ambient-petals"></div>
+
+  <!-- BOTTOM NAV (mobile + tablet only) -->
+  <nav class="bottomnav">
+    <div class="nav-item active" data-screen="home"    onclick="switchScreen('home')"><i class="fa-solid fa-house"></i><span>Главная</span></div>
+    <div class="nav-item"        data-screen="lessons" onclick="switchScreen('lessons')"><i class="fa-solid fa-book-open"></i><span>Уроки</span></div>
+    <div class="nav-item"        data-screen="hangul"  onclick="switchScreen('hangul')"><i class="fa-solid fa-language"></i><span>한글</span></div>
+    <div class="nav-item"        data-screen="games"   onclick="switchScreen('games')"><i class="fa-solid fa-gamepad"></i><span>Игры</span></div>
+    <div class="nav-item"        data-screen="profile" onclick="switchScreen('profile')"><i class="fa-solid fa-user"></i><span>Профиль</span></div>
+  </nav>
+
+</div>
+
+<!-- ─────────────── FIREBASE ─────────────── -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+  const _fbApp = firebase.initializeApp({
+    apiKey:            "AIzaSyBP0lw2WYMj7RQ42qsAlqpg8sE5Hu9k_0c",
+    authDomain:        "koreanmadie.firebaseapp.com",
+    databaseURL:       "https://koreanmadie-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId:         "koreanmadie",
+    storageBucket:     "koreanmadie.firebasestorage.app",
+    messagingSenderId: "226267487940",
+    appId:             "1:226267487940:web:411e04e968e94cabe9b391",
+    measurementId:     "G-W7NN71CFEZ"
+  });
+  const _db = firebase.database();
+  const _storage = firebase.storage();
+  const _auth = firebase.auth();
+  _auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(() => {});
+</script>
+
+<!-- ─────────────── DATA + LOGIC ─────────────── -->
+<script src="app.js"></script>
+
+</body>
+</html>
